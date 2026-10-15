@@ -18,6 +18,9 @@ public class Product {
     @Column(length = 1000) private String imageUrl;
     private String badge;
     private Integer stock = 20;
+    // Compatibility with the existing production products table. Glamora has no farmer
+    // concept, but the legacy schema requires this column for new rows.
+    @Column(name = "farmer_name") private String farmerName = "";
 
     public Product() {}
     public Product(String name, String category, BigDecimal price, String description, String imageUrl, String badge, Integer stock) {
